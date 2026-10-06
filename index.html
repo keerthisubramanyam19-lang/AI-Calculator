@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="top-bar">
+        <div>
+            <h1>AI Calculator</h1>
+            <p>Smart • Scientific • AI Powered</p>
+        </div>
+
+        <button id="aiButton">✦</button>
+    </div>
+
+    <div class="calculator-card">
+
+        <form method="POST" id="calculatorForm">
+
+            <div class="display">
+
+                <input
+                    type="text"
+                    id="expression"
+                    name="expression"
+                    value="{{ expression }}"
+                    placeholder="Enter calculation..."
+                    autocomplete="off"
+                >
+
+                <div class="result" id="calculatorResult">
+                    {{ result }}
+                </div>
+
+            </div>
+
+            <button type="button" id="showSteps">
+                Show Steps
+            </button>
+
+            <div id="stepsPanel" class="steps-panel"></div>
+
+            <div class="voice-section">
+
+                <button
+                    type="button"
+                    id="micButton"
+                    aria-label="Voice Assistant"
+                >
+                    🎙️
+                </button>
+
+                <span id="voiceText">
+                    Ask your calculation
+                </span>
+
+            </div>
+
+            <div class="buttons">
+
+                <button type="button" onclick="addValue('sin ')">sin</button>
+                <button type="button" onclick="addValue('cos ')">cos</button>
+                <button type="button" onclick="addValue('tan ')">tan</button>
+                <button type="button" onclick="addValue('sqrt ')">√</button>
+
+                <button type="button" onclick="addValue('asin ')">sin⁻¹</button>
+                <button type="button" onclick="addValue('acos ')">cos⁻¹</button>
+                <button type="button" onclick="addValue('atan ')">tan⁻¹</button>
+                <button type="button" onclick="addValue('log ')">log</button>
+
+                <button type="button" onclick="addValue('ln ')">ln</button>
+                <button type="button" onclick="addValue('^2')">x²</button>
+                <button type="button" onclick="addValue('^')">xʸ</button>
+                <button type="button" onclick="addValue('%')">%</button>
+
+                <button type="button" onclick="addValue('!')">!</button>
+                <button type="button" onclick="addValue('(')">(</button>
+                <button type="button" onclick="addValue(')')">)</button>
+                <button type="button" onclick="addValue('pi')">π</button>
+
+                <button type="button" onclick="addValue('e')">e</button>
+                <button type="button" onclick="addValue('7')">7</button>
+                <button type="button" onclick="addValue('8')">8</button>
+                <button type="button" onclick="addValue('9')">9</button>
+
+                <button type="button" onclick="addValue('/')">÷</button>
+                <button type="button" onclick="addValue('4')">4</button>
+                <button type="button" onclick="addValue('5')">5</button>
+                <button type="button" onclick="addValue('6')">6</button>
+
+                <button type="button" onclick="addValue('*')">×</button>
+                <button type="button" onclick="addValue('1')">1</button>
+                <button type="button" onclick="addValue('2')">2</button>
+                <button type="button" onclick="addValue('3')">3</button>
+
+                <button type="button" onclick="addValue('-')">−</button>
+                <button type="button" onclick="addValue('0')">0</button>
+                <button type="button" onclick="addValue('.')">.</button>
+                <button type="button" onclick="clearDisplay()">AC</button>
+
+                <button type="button" onclick="addValue('+')">+</button>
+
+                <button type="submit" class="equals">=</button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="history-card">
+
+        <div class="history-header">
+
+            <div>
+                <h2>Recent Calculations</h2>
+                <p>Your calculation history</p>
+            </div>
+
+            <button id="clearHistory">
+                Clear
+            </button>
+
+        </div>
+
+        <div
+            id="historyList"
+            class="history-list"
+        ></div>
+
+    </div>
+
+</div>
+
+<div class="ai-chat" id="aiChat">
+
+    <div class="chat-header">
+
+        <div>
+            <h3>✦ AI Assistant</h3>
+            <p>Ask me anything</p>
+        </div>
+
+        <button id="closeChat">
+            ×
+        </button>
+
+    </div>
+
+    <div
+        class="chat-messages"
+        id="chatMessages"
+    >
+
+        <div class="ai-message">
+            Hi! I'm your AI Assistant.
+            How can I help you?
+        </div>
+
+    </div>
+
+    <form id="chatForm">
+
+        <input
+            type="text"
+            id="chatInput"
+            placeholder="Ask your question..."
+            autocomplete="off"
+            required
+        >
+
+        <button type="submit">
+            ➤
+        </button>
+
+    </form>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
