@@ -53,7 +53,6 @@ function addValue(value) {
 
     expressionInput.value += value;
 
-    expressionInput.focus();
 
 }
 
